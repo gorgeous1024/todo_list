@@ -29,14 +29,14 @@
 
 {#if $isLoading}
 	<!-- Loading state while translations are loading -->
-	<div class="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+	<div class="min-h-screen bg-theme-primary flex items-center justify-center transition-colors duration-200">
 		<div class="text-center">
 			<div class="w-8 h-8 border-2 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-			<p class="text-gray-600 dark:text-gray-400">Loading...</p>
+			<p class="text-theme-secondary">Loading...</p>
 		</div>
 	</div>
 {:else}
-	<div class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+	<div class="min-h-screen bg-theme-primary transition-colors duration-200">
 		<Header />
 		<main class="container mx-auto px-4 py-8">
 			{@render children?.()}

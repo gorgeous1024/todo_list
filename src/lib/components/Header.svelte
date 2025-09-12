@@ -13,7 +13,7 @@
 	];
 </script>
 
-<header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+<header class="bg-theme-secondary shadow-sm border-b border-theme transition-colors duration-200">
 	<div class="container mx-auto px-4">
 		<div class="flex items-center justify-between h-16">
 			<!-- Logo and Title -->
@@ -22,7 +22,7 @@
 					<div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
 						<span class="text-white font-bold text-sm">T</span>
 					</div>
-					<span class="text-xl font-semibold text-gray-900 dark:text-white">{$_('app.title')}</span>
+					<span class="text-xl font-semibold text-theme-primary">{$_('app.title')}</span>
 				</a>
 			</div>
 
@@ -34,7 +34,7 @@
 						class="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors
 							{$page.url.pathname === item.href 
 								? 'bg-primary-100 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400' 
-								: 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'}"
+								: 'text-theme-secondary hover:text-theme-primary hover:bg-theme-tertiary'}"
 					>
 						<svelte:component this={item.icon} size={18} />
 						<span>{item.name}</span>
@@ -46,7 +46,7 @@
 			<div class="flex items-center space-x-4">
 				<!-- Search Button -->
 				<button
-					class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors"
+					class="p-2 text-theme-tertiary hover:text-theme-secondary hover:bg-theme-tertiary rounded-md transition-colors"
 					title={$_('common.search')}
 				>
 					<Search size={20} />
@@ -70,7 +70,7 @@
 		</div>
 
 		<!-- Mobile Navigation -->
-		<nav class="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+		<nav class="md:hidden py-4 border-t border-theme">
 			<div class="flex justify-around">
 				{#each navigation as item}
 					<a
@@ -78,7 +78,7 @@
 						class="flex flex-col items-center space-y-1 p-2 rounded-md text-xs font-medium transition-colors
 							{$page.url.pathname === item.href 
 								? 'text-primary-700 dark:text-primary-400' 
-								: 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'}"
+								: 'text-theme-secondary hover:text-theme-primary'}"
 					>
 						<svelte:component this={item.icon} size={20} />
 						<span>{item.name}</span>

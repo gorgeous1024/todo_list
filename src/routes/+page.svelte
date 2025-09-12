@@ -51,8 +51,8 @@
 	<!-- Page Header -->
 	<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 		<div>
-			<h1 class="text-3xl font-bold text-gray-900 dark:text-white">{$_('dashboard.title')}</h1>
-			<p class="text-gray-600 dark:text-gray-400 mt-1">
+			<h1 class="text-3xl font-bold text-theme-primary">{$_('dashboard.title')}</h1>
+			<p class="text-theme-secondary mt-1">
 				{$_('dashboard.subtitle')}
 			</p>
 		</div>
@@ -103,8 +103,8 @@
 				<div class="flex items-start space-x-3">
 					<Calendar class="text-orange-600 dark:text-orange-400 mt-1" size={20} />
 					<div>
-						<h3 class="text-lg font-semibold text-gray-900 dark:text-white">{$_('dashboard.upcomingDeadline')}</h3>
-						<p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+						<h3 class="text-lg font-semibold text-theme-primary">{$_('dashboard.upcomingDeadline')}</h3>
+						<p class="text-theme-secondary text-sm mt-1">
 							{$_('dashboard.upcomingDeadlineSubtitle')}
 						</p>
 					</div>
@@ -119,8 +119,8 @@
 	<!-- View Controls -->
 	<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 		<div class="flex items-center space-x-4">
-			<h2 class="text-xl font-semibold text-gray-900 dark:text-white">{$_('dashboard.yourTasks')}</h2>
-			<span class="text-sm text-gray-500 dark:text-gray-400">
+			<h2 class="text-xl font-semibold text-theme-primary">{$_('dashboard.yourTasks')}</h2>
+			<span class="text-sm text-theme-tertiary">
 				{tasks.length} {tasks.length === 1 ? $_('dashboard.taskCount') : $_('dashboard.taskCountPlural')}
 			</span>
 		</div>
@@ -138,9 +138,9 @@
 	{:else if tasks.length === 0}
 		<!-- Empty State -->
 		<div class="text-center py-12">
-			<TrendingUp class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-600" />
-			<h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">{$_('dashboard.noTasksFound')}</h3>
-			<p class="mt-2 text-gray-500 dark:text-gray-400">
+			<TrendingUp class="mx-auto h-12 w-12 text-theme-tertiary" />
+			<h3 class="mt-4 text-lg font-medium text-theme-primary">{$_('dashboard.noTasksFound')}</h3>
+			<p class="mt-2 text-theme-secondary">
 				{$_('dashboard.noTasksSubtitle')}
 			</p>
 			<a href="/task/new" class="btn-primary mt-4 inline-flex items-center space-x-2">

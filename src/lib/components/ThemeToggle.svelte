@@ -37,8 +37,8 @@
       : 'w-10 h-10 rounded-lg',
     
     // Color and hover states
-    'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100',
-    'bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700',
+    'text-theme-primary hover:text-gray-900 dark:hover:text-gray-100',
+    'bg-theme-primary hover:bg-gray-50 dark:hover:bg-gray-700',
     'border border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600',
     'shadow-sm hover:shadow-md',
     

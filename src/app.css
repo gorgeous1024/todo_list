@@ -3,6 +3,31 @@
 /* Inter font import */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* Theme-based color variables */
+:root {
+  /* Light theme colors */
+  --bg-primary: #f9fafb; /* gray-50 */
+  --bg-secondary: #ffffff; /* white */
+  --bg-tertiary: #f3f4f6; /* gray-100 */
+  --text-primary: #111827; /* gray-900 */
+  --text-secondary: #374151; /* gray-700 */
+  --text-tertiary: #6b7280; /* gray-500 */
+  --border-color: #e5e7eb; /* gray-200 */
+  --border-secondary: #d1d5db; /* gray-300 */
+}
+
+.dark {
+  /* Dark theme colors */
+  --bg-primary: #111827; /* gray-900 */
+  --bg-secondary: #1f2937; /* gray-800 */
+  --bg-tertiary: #374151; /* gray-700 */
+  --text-primary: #f9fafb; /* gray-50 */
+  --text-secondary: #e5e7eb; /* gray-200 */
+  --text-tertiary: #9ca3af; /* gray-400 */
+  --border-color: #374151; /* gray-700 */
+  --border-secondary: #4b5563; /* gray-600 */
+}
+
 /* Custom component styles that extend Tailwind */
 .btn {
   @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
@@ -42,6 +67,41 @@
 
 .container {
   @apply w-full mx-auto px-4;
+}
+
+/* Theme-aware text colors */
+.text-theme-primary {
+  color: var(--text-primary);
+}
+
+.text-theme-secondary {
+  color: var(--text-secondary);
+}
+
+.text-theme-tertiary {
+  color: var(--text-tertiary);
+}
+
+/* Theme-aware background colors */
+.bg-theme-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-theme-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.bg-theme-tertiary {
+  background-color: var(--bg-tertiary);
+}
+
+/* Theme-aware border colors */
+.border-theme {
+  border-color: var(--border-color);
+}
+
+.border-theme-secondary {
+  border-color: var(--border-secondary);
 }
 
 /* Custom utilities for specific needs */

@@ -37,7 +37,7 @@
 <div class="language-switcher relative">
 	<button
 		on:click={toggleDropdown}
-		class="flex items-center space-x-2 p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors"
+		class="flex items-center space-x-2 p-2 text-theme-tertiary hover:text-theme-secondary hover:bg-theme-tertiary rounded-md transition-colors"
 		title={$_('languageSwitcher.title')}
 	>
 		<Globe size={20} />
@@ -47,12 +47,12 @@
 	</button>
 
 	{#if isOpen}
-		<div class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700 z-50">
+		<div class="absolute right-0 mt-2 w-48 bg-theme-secondary rounded-md shadow-lg border border-theme z-50">
 			<div class="py-1">
 				{#each languages as language}
 					<button
 						on:click={() => handleLanguageChange(language.code)}
-						class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors
+						class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-theme-secondary hover:bg-theme-tertiary transition-colors
 							{$locale === language.code ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400' : ''}"
 					>
 						<span class="text-lg">{language.flag}</span>
