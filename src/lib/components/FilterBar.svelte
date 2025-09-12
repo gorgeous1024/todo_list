@@ -3,6 +3,7 @@
 	import { TaskStatus, TaskPriority } from '$lib/types/index.js';
 	import { Search, Filter, X, ArrowUpDown } from 'lucide-svelte';
 	import { debounce } from '$lib/utils/index.js';
+	import { _ } from 'svelte-i18n';
 
 	let searchInput = '';
 	let showFilters = false;
@@ -48,7 +49,7 @@
 			<Search class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
 			<input
 				type="text"
-				placeholder="Search tasks..."
+				placeholder={$_('filterBar.searchPlaceholder')}
 				bind:value={searchInput}
 				on:input={handleSearchInput}
 				class="input pl-10 pr-4"
@@ -71,7 +72,7 @@
 					{hasActiveFilters ? 'ring-2 ring-primary-500' : ''}"
 			>
 				<Filter size={16} />
-				<span>Filters</span>
+				<span>{$_('filterBar.filters')}</span>
 				{#if hasActiveFilters}
 					<span class="w-2 h-2 bg-primary-500 rounded-full"></span>
 				{/if}
@@ -87,14 +88,14 @@
 					}}
 					class="input pr-8 appearance-none cursor-pointer"
 				>
-					<option value="created_at-desc">Newest first</option>
-					<option value="created_at-asc">Oldest first</option>
-					<option value="title-asc">Title A-Z</option>
-					<option value="title-desc">Title Z-A</option>
-					<option value="due_date-asc">Due date (nearest)</option>
-					<option value="due_date-desc">Due date (furthest)</option>
-					<option value="priority-desc">Priority (high to low)</option>
-					<option value="priority-asc">Priority (low to high)</option>
+					<option value="created_at-desc">{$_('filterBar.newestFirst')}</option>
+					<option value="created_at-asc">{$_('filterBar.oldestFirst')}</option>
+					<option value="title-asc">{$_('filterBar.titleAZ')}</option>
+					<option value="title-desc">{$_('filterBar.titleZA')}</option>
+					<option value="due_date-asc">{$_('filterBar.dueDateNearest')}</option>
+					<option value="due_date-desc">{$_('filterBar.dueDateFurthest')}</option>
+					<option value="priority-desc">{$_('filterBar.priorityHighToLow')}</option>
+					<option value="priority-asc">{$_('filterBar.priorityLowToHigh')}</option>
 				</select>
 				<ArrowUpDown class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" size={16} />
 			</div>
@@ -107,51 +108,54 @@
 			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 				<!-- Status Filter -->
 				<div>
-					<label class="label">Status</label>
+					<label for="status-filter" class="label">{$_('filterBar.status')}</label>
 					<select
+						id="status-filter"
 						value={currentFilter.status || ''}
 						on:change={(e) => viewActions.setFilter({ 
 							status: e.currentTarget.value ? e.currentTarget.value as TaskStatus : undefined 
 						})}
 						class="input"
 					>
-						<option value="">All statuses</option>
-						<option value={TaskStatus.TODO}>To Do</option>
-						<option value={TaskStatus.IN_PROGRESS}>In Progress</option>
-						<option value={TaskStatus.DONE}>Done</option>
+						<option value="">{$_('filterBar.allStatuses')}</option>
+						<option value={TaskStatus.TODO}>{$_('taskForm.toDo')}</option>
+						<option value={TaskStatus.IN_PROGRESS}>{$_('taskForm.inProgress')}</option>
+						<option value={TaskStatus.DONE}>{$_('taskForm.done')}</option>
 					</select>
 				</div>
 
 				<!-- Priority Filter -->
 				<div>
-					<label class="label">Priority</label>
+					<label for="priority-filter" class="label">{$_('filterBar.priority')}</label>
 					<select
+						id="priority-filter"
 						value={currentFilter.priority || ''}
 						on:change={(e) => viewActions.setFilter({ 
 							priority: e.currentTarget.value ? e.currentTarget.value as TaskPriority : undefined 
 						})}
 						class="input"
 					>
-						<option value="">All priorities</option>
-						<option value={TaskPriority.HIGH}>High</option>
-						<option value={TaskPriority.MEDIUM}>Medium</option>
-						<option value={TaskPriority.LOW}>Low</option>
+						<option value="">{$_('filterBar.allPriorities')}</option>
+						<option value={TaskPriority.HIGH}>{$_('taskForm.highPriority')}</option>
+						<option value={TaskPriority.MEDIUM}>{$_('taskForm.mediumPriority')}</option>
+						<option value={TaskPriority.LOW}>{$_('taskForm.lowPriority')}</option>
 					</select>
 				</div>
 
 				<!-- Completion Filter -->
 				<div>
-					<label class="label">Completion</label>
+					<label for="completion-filter" class="label">{$_('common.completion')}</label>
 					<select
+						id="completion-filter"
 						value={currentFilter.completed !== undefined ? currentFilter.completed.toString() : ''}
 						on:change={(e) => viewActions.setFilter({ 
 							completed: e.currentTarget.value ? e.currentTarget.value === 'true' : undefined 
 						})}
 						class="input"
 					>
-						<option value="">All tasks</option>
-						<option value="false">Incomplete</option>
-						<option value="true">Completed</option>
+						<option value="">{$_('filterBar.allTasks')}</option>
+						<option value="false">{$_('filterBar.incomplete')}</option>
+						<option value="true">{$_('filterBar.completed')}</option>
 					</select>
 				</div>
 
@@ -163,7 +167,7 @@
 							class="btn-secondary w-full flex items-center justify-center space-x-2"
 						>
 							<X size={16} />
-							<span>Clear filters</span>
+							<span>{$_('filterBar.clearFilters')}</span>
 						</button>
 					{/if}
 				</div>

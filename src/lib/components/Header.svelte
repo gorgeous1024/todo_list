@@ -2,11 +2,14 @@
 	import { page } from '$app/stores';
 	import { Plus, Home, Kanban, List, Search } from 'lucide-svelte';
 	import ThemeToggle from './ThemeToggle.svelte';
+	import LanguageSwitcher from './LanguageSwitcher.svelte';
+	import { _ } from 'svelte-i18n';
 
-	const navigation = [
-		{ name: 'Dashboard', href: '/', icon: Home },
-		{ name: 'Tasks', href: '/tasks', icon: List },
-		{ name: 'Kanban', href: '/kanban', icon: Kanban },
+	// Reactive navigation that updates when language changes
+	$: navigation = [
+		{ name: $_('navigation.dashboard'), href: '/', icon: Home },
+		{ name: $_('navigation.tasks'), href: '/tasks', icon: List },
+		{ name: $_('navigation.kanban'), href: '/kanban', icon: Kanban },
 	];
 </script>
 
@@ -19,7 +22,7 @@
 					<div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
 						<span class="text-white font-bold text-sm">T</span>
 					</div>
-					<span class="text-xl font-semibold text-gray-900 dark:text-white">TodoApp</span>
+					<span class="text-xl font-semibold text-gray-900 dark:text-white">{$_('app.title')}</span>
 				</a>
 			</div>
 
@@ -44,10 +47,13 @@
 				<!-- Search Button -->
 				<button
 					class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors"
-					title="Search tasks"
+					title={$_('common.search')}
 				>
 					<Search size={20} />
 				</button>
+
+				<!-- Language Switcher -->
+				<LanguageSwitcher />
 
 				<!-- Theme Toggle -->
 				<ThemeToggle size={20} variant="compact" />
@@ -58,7 +64,7 @@
 					class="btn-primary flex items-center space-x-2"
 				>
 					<Plus size={18} />
-					<span class="hidden sm:inline">New Task</span>
+					<span class="hidden sm:inline">{$_('common.newTask')}</span>
 				</a>
 			</div>
 		</div>

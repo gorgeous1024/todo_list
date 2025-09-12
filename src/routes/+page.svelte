@@ -20,6 +20,7 @@
 	import ErrorAlert from '$lib/components/ErrorAlert.svelte';
 	import { Plus, Calendar, TrendingUp, CheckCircle, Clock } from 'lucide-svelte';
 	import type { Task } from '$lib/types/index.js';
+	import { _ } from 'svelte-i18n';
 
 	let nearestDeadlineTask: Task | null = null;
 
@@ -42,22 +43,22 @@
 </script>
 
 <svelte:head>
-	<title>Dashboard - TodoApp</title>
-	<meta name="description" content="Manage your tasks efficiently with TodoApp dashboard" />
+	<title>{$_('dashboard.title')} - {$_('app.title')}</title>
+	<meta name="description" content={$_('app.description')} />
 </svelte:head>
 
 <div class="space-y-8">
 	<!-- Page Header -->
 	<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 		<div>
-			<h1 class="text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
+			<h1 class="text-3xl font-bold text-gray-900 dark:text-white">{$_('dashboard.title')}</h1>
 			<p class="text-gray-600 dark:text-gray-400 mt-1">
-				Welcome back! Here's an overview of your tasks.
+				{$_('dashboard.subtitle')}
 			</p>
 		</div>
 		<a href="/task/new" class="btn-primary flex items-center space-x-2 w-fit">
 			<Plus size={18} />
-			<span>Create Task</span>
+			<span>{$_('dashboard.createTask')}</span>
 		</a>
 	</div>
 
@@ -69,26 +70,26 @@
 	<!-- Stats Cards -->
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 		<StatsCard
-			title="Total Tasks"
+			title={$_('stats.totalTasks')}
 			value={stats.total}
 			icon={CheckCircle}
 			color="blue"
 		/>
 		<StatsCard
-			title="Completed"
+			title={$_('stats.completed')}
 			value={stats.completed}
 			icon={CheckCircle}
 			color="green"
-			subtitle="{stats.completionRate}% completion rate"
+			subtitle="{stats.completionRate}% {$_('stats.completionRate')}"
 		/>
 		<StatsCard
-			title="Pending"
+			title={$_('stats.pending')}
 			value={stats.pending}
 			icon={Clock}
 			color="yellow"
 		/>
 		<StatsCard
-			title="Overdue"
+			title={$_('stats.overdue')}
 			value={stats.overdue}
 			icon={Calendar}
 			color="red"
@@ -102,9 +103,9 @@
 				<div class="flex items-start space-x-3">
 					<Calendar class="text-orange-600 dark:text-orange-400 mt-1" size={20} />
 					<div>
-						<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Upcoming Deadline</h3>
+						<h3 class="text-lg font-semibold text-gray-900 dark:text-white">{$_('dashboard.upcomingDeadline')}</h3>
 						<p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
-							Don't forget about this important task
+							{$_('dashboard.upcomingDeadlineSubtitle')}
 						</p>
 					</div>
 				</div>
@@ -118,9 +119,9 @@
 	<!-- View Controls -->
 	<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 		<div class="flex items-center space-x-4">
-			<h2 class="text-xl font-semibold text-gray-900 dark:text-white">Your Tasks</h2>
+			<h2 class="text-xl font-semibold text-gray-900 dark:text-white">{$_('dashboard.yourTasks')}</h2>
 			<span class="text-sm text-gray-500 dark:text-gray-400">
-				{tasks.length} {tasks.length === 1 ? 'task' : 'tasks'}
+				{tasks.length} {tasks.length === 1 ? $_('dashboard.taskCount') : $_('dashboard.taskCountPlural')}
 			</span>
 		</div>
 		<ViewToggle />
@@ -138,13 +139,13 @@
 		<!-- Empty State -->
 		<div class="text-center py-12">
 			<TrendingUp class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-600" />
-			<h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">No tasks found</h3>
+			<h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">{$_('dashboard.noTasksFound')}</h3>
 			<p class="mt-2 text-gray-500 dark:text-gray-400">
-				Get started by creating your first task.
+				{$_('dashboard.noTasksSubtitle')}
 			</p>
 			<a href="/task/new" class="btn-primary mt-4 inline-flex items-center space-x-2">
 				<Plus size={18} />
-				<span>Create your first task</span>
+				<span>{$_('dashboard.createFirstTask')}</span>
 			</a>
 		</div>
 	{:else}

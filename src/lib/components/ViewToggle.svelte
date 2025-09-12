@@ -2,11 +2,13 @@
 	import { viewModeStore, viewActions } from '$lib/stores/tasks.js';
 	import { List, Grid3x3, Kanban } from 'lucide-svelte';
 	import type { ViewMode } from '$lib/types/index.js';
+	import { _ } from 'svelte-i18n';
 
-	const viewOptions = [
-		{ type: 'list' as const, icon: List, label: 'List' },
-		{ type: 'grid' as const, icon: Grid3x3, label: 'Grid' },
-		{ type: 'kanban' as const, icon: Kanban, label: 'Board' }
+	// Reactive view options that update when language changes
+	$: viewOptions = [
+		{ type: 'list' as const, icon: List, label: $_('viewToggle.list') },
+		{ type: 'grid' as const, icon: Grid3x3, label: $_('viewToggle.grid') },
+		{ type: 'kanban' as const, icon: Kanban, label: $_('viewToggle.kanban') }
 	];
 
 	function setViewMode(type: ViewMode['type']) {

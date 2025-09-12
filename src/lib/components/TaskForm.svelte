@@ -5,6 +5,7 @@
 	import { validateImageFile } from '$lib/utils/index.js';
 	import ImageUpload from './ImageUpload.svelte';
 	import { Calendar, Save, X, AlertCircle } from 'lucide-svelte';
+	import { _ } from 'svelte-i18n';
 
 	// Props
 	export let mode: 'create' | 'edit' = 'create';
@@ -42,21 +43,21 @@
 		switch (field) {
 			case 'title':
 				if (!value.trim()) {
-					localErrors[field] = 'Title is required';
+					localErrors[field] = $_('taskForm.titleRequired');
 				} else if (value.length > 100) {
-					localErrors[field] = 'Title must be 100 characters or less';
+					localErrors[field] = $_('taskForm.titleMaxLength');
 				}
 				break;
 			case 'description':
 				if (value && value.length > 500) {
-					localErrors[field] = 'Description must be 500 characters or less';
+					localErrors[field] = $_('taskForm.descriptionMaxLength');
 				}
 				break;
 			case 'photo':
 				if (value) {
 					const validation = validateImageFile(value);
 					if (!validation.valid) {
-						localErrors[field] = validation.error || 'Invalid image file';
+						localErrors[field] = validation.error || $_('errors.invalidFileType');
 					}
 				}
 				break;
@@ -140,7 +141,7 @@
 	<!-- Title -->
 	<div>
 		<label for="title" class="label">
-			Title <span class="text-red-500">*</span>
+			{$_('taskForm.title')} <span class="text-red-500">*</span>
 		</label>
 		<input
 			id="title"
@@ -149,36 +150,36 @@
 			on:blur={() => handleFieldBlur('title')}
 			disabled={isSubmitting}
 			class="input {getFieldError('title') ? 'border-red-500 focus:ring-red-500' : ''}"
-			placeholder="Enter task title..."
+			placeholder={$_('taskForm.titlePlaceholder')}
 			maxlength="100"
 		/>
 		{#if getFieldError('title')}
 			<p class="text-red-500 dark:text-red-400 text-sm mt-1">{getFieldError('title')}</p>
 		{/if}
-		<p class="text-gray-500 dark:text-gray-400 text-xs mt-1">{title.length}/100 characters</p>
+		<p class="text-gray-500 dark:text-gray-400 text-xs mt-1">{title.length}/100 {$_('common.characters')}</p>
 	</div>
 
 	<!-- Description -->
 	<div>
-		<label for="description" class="label">Description</label>
+		<label for="description" class="label">{$_('taskForm.description')}</label>
 		<textarea
 			id="description"
 			bind:value={description}
 			on:blur={() => handleFieldBlur('description')}
 			disabled={isSubmitting}
 			class="input min-h-24 {getFieldError('description') ? 'border-red-500 focus:ring-red-500' : ''}"
-			placeholder="Enter task description..."
+			placeholder={$_('taskForm.descriptionPlaceholder')}
 			maxlength="500"
 		></textarea>
 		{#if getFieldError('description')}
 			<p class="text-red-500 dark:text-red-400 text-sm mt-1">{getFieldError('description')}</p>
 		{/if}
-		<p class="text-gray-500 dark:text-gray-400 text-xs mt-1">{description.length}/500 characters</p>
+		<p class="text-gray-500 dark:text-gray-400 text-xs mt-1">{description.length}/500 {$_('common.characters')}</p>
 	</div>
 
 	<!-- Due Date -->
 	<div>
-		<label for="dueDate" class="label">Due Date</label>
+		<label for="dueDate" class="label">{$_('taskForm.dueDate')}</label>
 		<div class="relative">
 			<input
 				id="dueDate"
@@ -196,38 +197,38 @@
 	<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 		<!-- Priority -->
 		<div>
-			<label for="priority" class="label">Priority</label>
+			<label for="priority" class="label">{$_('taskForm.priority')}</label>
 			<select
 				id="priority"
 				bind:value={priority}
 				disabled={isSubmitting}
 				class="input"
 			>
-				<option value={TaskPriority.LOW}>Low Priority</option>
-				<option value={TaskPriority.MEDIUM}>Medium Priority</option>
-				<option value={TaskPriority.HIGH}>High Priority</option>
+				<option value={TaskPriority.LOW}>{$_('taskForm.lowPriority')}</option>
+				<option value={TaskPriority.MEDIUM}>{$_('taskForm.mediumPriority')}</option>
+				<option value={TaskPriority.HIGH}>{$_('taskForm.highPriority')}</option>
 			</select>
 		</div>
 
 		<!-- Status -->
 		<div>
-			<label for="status" class="label">Status</label>
+			<label for="status" class="label">{$_('taskForm.status')}</label>
 			<select
 				id="status"
 				bind:value={status}
 				disabled={isSubmitting}
 				class="input"
 			>
-				<option value={TaskStatus.TODO}>To Do</option>
-				<option value={TaskStatus.IN_PROGRESS}>In Progress</option>
-				<option value={TaskStatus.DONE}>Done</option>
+				<option value={TaskStatus.TODO}>{$_('taskForm.toDo')}</option>
+				<option value={TaskStatus.IN_PROGRESS}>{$_('taskForm.inProgress')}</option>
+				<option value={TaskStatus.DONE}>{$_('taskForm.done')}</option>
 			</select>
 		</div>
 	</div>
 
 	<!-- Photo Upload -->
 	<div>
-		<label class="label">Photo Attachment</label>
+		<div class="label">{$_('taskForm.photoAttachment')}</div>
 		<ImageUpload
 			{existingPhotoUrl}
 			disabled={isSubmitting}
@@ -245,7 +246,7 @@
 			class="btn-secondary flex items-center space-x-2"
 		>
 			<X size={16} />
-			<span>Cancel</span>
+			<span>{$_('common.cancel')}</span>
 		</button>
 
 		<button
@@ -258,7 +259,7 @@
 			{:else}
 				<Save size={16} />
 			{/if}
-			<span>{mode === 'create' ? 'Create Task' : 'Save Changes'}</span>
+			<span>{mode === 'create' ? $_('taskForm.createTask') : $_('taskForm.saveChanges')}</span>
 		</button>
 	</div>
 </form>
