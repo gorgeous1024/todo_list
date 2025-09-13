@@ -50,7 +50,7 @@
 			<!-- Column Header -->
 			<div class="flex items-center justify-between mb-4">
 				<div class="flex items-center space-x-2">
-					<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+					<h3 class="text-lg font-semibold text-theme-primary">
 						{column.title}
 					</h3>
 					<span class="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full">

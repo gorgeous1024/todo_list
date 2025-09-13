@@ -139,7 +139,7 @@
 		{#if isEditing}
 			<!-- Edit Mode -->
 			<div class="mb-8">
-				<h1 class="text-3xl font-bold text-gray-900 dark:text-white">Edit Task</h1>
+				<h1 class="text-3xl font-bold text-theme-primary">Edit Task</h1>
 				<p class="text-gray-600 dark:text-gray-400 mt-2">
 					Make changes to your task details.
 				</p>
@@ -159,7 +159,7 @@
 				<!-- Header -->
 				<div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
 					<div class="flex-1 min-w-0">
-						<h1 class="text-3xl font-bold text-gray-900 dark:text-white">
+						<h1 class="text-3xl font-bold text-theme-primary">
 							{task.title}
 						</h1>
 						{#if task.description}
@@ -196,7 +196,7 @@
 	{:else}
 		<!-- Not Found State -->
 		<div class="text-center py-12">
-			<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+			<h2 class="text-2xl font-bold text-theme-primary mb-4">
 				Task Not Found
 			</h2>
 			<p class="text-gray-600 dark:text-gray-400 mb-6">

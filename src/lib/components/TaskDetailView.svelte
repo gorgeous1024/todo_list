@@ -66,7 +66,7 @@
 	<!-- Task Status and Actions -->
 	<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
 		<div class="flex items-center justify-between mb-6">
-			<h2 class="text-xl font-semibold text-gray-900 dark:text-white">Task Status</h2>
+			<h2 class="text-xl font-semibold text-theme-primary">Task Status</h2>
 			
 			<!-- Quick Completion Toggle -->
 			<button
@@ -102,7 +102,7 @@
 				</div>
 				<div>
 					<p class="text-sm font-medium text-gray-500 dark:text-gray-400">Status</p>
-					<p class="text-lg font-semibold text-gray-900 dark:text-white">
+					<p class="text-lg font-semibold text-theme-primary">
 						{getStatusLabel(task.status)}
 					</p>
 				</div>
@@ -115,7 +115,7 @@
 				</div>
 				<div>
 					<p class="text-sm font-medium text-gray-500 dark:text-gray-400">Priority</p>
-					<p class="text-lg font-semibold text-gray-900 dark:text-white">
+					<p class="text-lg font-semibold text-theme-primary">
 						{getPriorityLabel(task.priority)}
 					</p>
 				</div>
@@ -131,7 +131,7 @@
 				</div>
 				<div>
 					<p class="text-sm font-medium text-gray-500 dark:text-gray-400">Completion</p>
-					<p class="text-lg font-semibold text-gray-900 dark:text-white">
+					<p class="text-lg font-semibold text-theme-primary">
 						{task.completed ? 'Completed' : 'Pending'}
 					</p>
 				</div>
@@ -177,7 +177,7 @@
 
 	<!-- Task Details -->
 	<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-		<h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">Task Details</h2>
+		<h2 class="text-xl font-semibold text-theme-primary mb-6">Task Details</h2>
 		
 		<div class="space-y-6">
 			<!-- Description -->

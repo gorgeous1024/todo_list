@@ -93,7 +93,7 @@
 			</div>
 
 			<!-- Title -->
-			<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors
+			<h3 class="text-lg font-semibold text-theme-primary mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors
 				{task.completed ? 'line-through opacity-60' : ''}">
 				<a href="/task/{task.id}" class="hover:underline">
 					{compact ? truncateText(task.title, 50) : task.title}

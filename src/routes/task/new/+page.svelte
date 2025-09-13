@@ -60,7 +60,7 @@
 <div class="max-w-2xl mx-auto">
 	<!-- Page Header -->
 	<div class="mb-8">
-		<h1 class="text-3xl font-bold text-gray-900 dark:text-white">Create New Task</h1>
+		<h1 class="text-3xl font-bold text-theme-primary">Create New Task</h1>
 		<p class="text-gray-600 dark:text-gray-400 mt-2">
 			Add a new task to your todo list with all the details you need.
 		</p>

@@ -34,7 +34,7 @@
 		<div class="flex items-center space-x-3">
 			<Kanban class="text-primary-600 dark:text-primary-400" size={32} />
 			<div>
-				<h1 class="text-3xl font-bold text-gray-900 dark:text-white">Kanban Board</h1>
+				<h1 class="text-3xl font-bold text-theme-primary">Kanban Board</h1>
 				<p class="text-gray-600 dark:text-gray-400 mt-1">
 					Drag and drop tasks between columns to update their status.
 				</p>
@@ -63,7 +63,7 @@
 		<!-- Empty State -->
 		<div class="text-center py-12">
 			<Kanban class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-600" />
-			<h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">No tasks to display</h3>
+			<h3 class="mt-4 text-lg font-medium text-theme-primary">No tasks to display</h3>
 			<p class="mt-2 text-gray-500 dark:text-gray-400">
 				Create your first task to start using the Kanban board.
 			</p>

@@ -123,7 +123,7 @@
 				{/if}
 				
 				<div class="text-sm">
-					<p class="font-medium text-gray-900 dark:text-white">
+					<p class="font-medium text-theme-primary">
 						{dragOver ? 'Drop image here' : 'Click to upload or drag and drop'}
 					</p>
 					<p class="text-gray-500 dark:text-gray-400 mt-1">
