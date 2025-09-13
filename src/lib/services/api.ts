@@ -1,7 +1,5 @@
 import type { Task, CreateTaskData, UpdateTaskData, ApiResponse } from '../types/index.js';
-
-// Configuration
-const API_BASE_URL = 'http://localhost:8000/api'; // You can change this to your actual API URL
+import { API_CONFIG } from '../config/index.js';
 
 class ApiError extends Error {
   constructor(public status: number, message: string, public data?: any) {
@@ -13,7 +11,7 @@ class ApiError extends Error {
 class ApiService {
   private baseUrl: string;
 
-  constructor(baseUrl: string = API_BASE_URL) {
+  constructor(baseUrl: string = API_CONFIG.BASE_URL) {
     this.baseUrl = baseUrl;
   }
 
@@ -47,11 +45,23 @@ class ApiService {
     const config = { ...defaultOptions, ...options };
 
     try {
-      const response = await fetch(url, config);
+      // Create AbortController for timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.TIMEOUT);
+      
+      const response = await fetch(url, {
+        ...config,
+        signal: controller.signal
+      });
+      
+      clearTimeout(timeoutId);
       return this.handleResponse<T>(response);
     } catch (error) {
       if (error instanceof ApiError) {
         throw error;
+      }
+      if (error instanceof Error && error.name === 'AbortError') {
+        throw new ApiError(408, 'Request timeout', error);
       }
       throw new ApiError(0, 'Network error occurred', error);
     }
