@@ -50,7 +50,7 @@
 		<!-- Search Input -->
 		<div class="relative flex-1">
 			<Search
-				class="absolute left-3 top-1/2 transform -translate-y-1/2 text-theme-tertiary pointer-events-none"
+				class="absolute right-3 top-1/2 transform -translate-y-1/2 text-theme-tertiary pointer-events-none"
 				size={20}
 			/>
 			<input
@@ -59,7 +59,7 @@
 				placeholder={$_("filterBar.searchPlaceholder")}
 				bind:value={searchInput}
 				on:input={handleSearchInput}
-				class="input pl-12 pr-10"
+				class="input"
 			/>
 			{#if searchInput}
 				<button
